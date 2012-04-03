@@ -25,7 +25,9 @@ module Jammit
     app.helpers Jammit::Helper
     app.helpers Jammit::HelperOverrides
 
-    app.use Jammit::Middleware
+    if app.development?
+      app.use Jammit::Middleware
+    end
 
     # reload assets after every request (on development only)
     if app.development?
